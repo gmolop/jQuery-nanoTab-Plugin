@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery nanoTab plug-in</title>
+
+    <style type="text/css">
+        html {
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            background-color: #F5F5F5;
+            text-shadow: 0 1px 0 #FFF;
+            color: #333;
+            font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300;
+            margin: 0;
+            padding: 0px 10px 100px;
+        }
+        pre.prettyprint {
+            white-space: pre-wrap;
+        }
+        pre.prettyprint ol li {
+            list-style-type: decimal-leading-zero;
+            color: #CECECE;
+        }
+        .tabs.options {
+            width: 100%;
+        }
+        .tabs {
+            padding: 30px;
+            background-color: #FFF;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px -5px #333;
+            width: 640px;
+            max-width: 100%;
+            min-width: 340px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .tabs > ul {
+            padding: 0;
+            margin: 0;
+        }
+        .tabs > ul:after {
+            float: none;
+            clear: both;
+            content:'';
+            display: block;
+        }
+        .tabs > ul > li:first-child {
+            border-top-left-radius: 5px;
+        }
+        .tabs > ul > li {
+            float: left;
+            height: auto;
+            padding: 5px;
+            margin: 0;
+            cursor: pointer;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            display: inline-block;
+            border: 1px #f5f5f5 solid;
+            border-bottom: none;
+        }
+        .tabs > ul > li:last-child {
+            border-top-right-radius: 5px;
+        }
+        .tabs > ul > li:hover {
+            background-color: #F5F5F5;
+            border-color: #CCC;
+        }
+        .tabs > ul > li.on {
+            background-color: #f5f5f5;
+            color: #333;
+            border-color: #ccc;
+            cursor: default;
+        }
+        .tabs > div {
+            display: none;
+            border: 1px #ccc solid;
+            padding: 10px;
+            border-radius: 5px;
+            border-top-left-radius: 0;
+        }
+        .tabs > div img {
+            margin: 0 10px 10px 0;
+        }
+        .tabs > div.on {
+            background-color: #F5F5F5;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>jQuery nanoTab plug-in example</h2>
+<pre class="prettyprint">
+@name             jQuery nanoTab Plugin
+@Description      Easy, Simple & lightweight jQuery Tab Plugin
+@author           gmo
+@version          1.0 [aug/14]
+@proyect          https://github.com/gmolop/jQuery-nanoTab-Plugin
+@JSfiddle         http://jsfiddle.net/gmolop/ej7h80yj/embedded/result/
+@Original Size    2.94 KB uncompressed & commented
+@Compiled Size    285 bytes gzipped (no style, uncommented) [Compiled with http://closure-compiler.appspot.com/]
+@copyright        none, use as you want
+
+@changelog        v1.0 - Initial release
+</pre>
+
+    <h3>Usage:</h3>
+    <p>HTML Markup</p>
+<pre class="prettyprint linenums">
+&lt;div class=&quot;tabs&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;tab 1&lt;/li&gt;
+        &lt;li&gt;tab 2&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;content 1&lt;/div&gt;
+    &lt;div&gt;content 2&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+    <p>CSS Markup advise:</p>
+    <small>add this if you don't want to wait until the script hide the tabs content</small>
+<pre class="prettyprint linenums">
+.tabs > div { display: none }
+</pre>
+
+    <p>Load the plugin and initialize it with the default or custom configuration</p>
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.nanotab.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    jQuery( selector ).nanotab();
+&lt;/script&gt;
+</pre>
+
+    <h3>Configuration:</h3>
+<pre class="prettyprint">
+| type        | name     | description        | valid options         | default |
+|-------------|----------|--------------------|-----------------------|---------|
+|{boolean}    | _default | Default opened tab | [index|null]          |0        |
+|{string}     | _effect  | Transition effect  | [showHide|slide|null] |null     |
+|{string|int} | _speed   | Transition speed   | [fast|slow|ms]        |0        |
+</pre>
+
+
+    <h3>Require:</h3>
+<pre class="prettyprint linenums">
+- jQuery v1.4.3+
+- Custom CSS (take fiddle as example)
+</pre>
+
+    <h3>Examples:</h3>
+
+    <div class="tabs options">
+        <ul>
+            <li>Default config</li>
+            <li>Custom config example 1</li>
+            <li>Custom config example 2</li>
+            <li>Custom config example 3</li>
+        </ul>
+        <div>
+
+            <div class="tabs option0">
+                <h3>Default config:</h3>
+<pre class="prettyprint linenums">
+jQuery( selector ).nanotab();
+</pre>
+                <ul>
+                    <li>tab 1</li>
+                    <li>tab 2</li>
+                    <li>tab 3</li>
+                    <li>tab 4</li>
+                    <li>tab 5</li>
+                </ul>
+                <div>
+                    <h4>Tab 1 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-7.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 2 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptatum eos nisi, rem minus et omnis eius amet deleniti nostrum? Fugit excepturi saepe assumenda ratione neque facere expedita! Iusto, architecto.</p>
+                </div>
+                <div>
+                    <h4>Tab 3 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-6.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 4 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nihil dolorum hic quasi, aliquid provident nobis velit, sint ducimus officiis error tempora. Ipsa, eos aspernatur hic consequatur ab, optio voluptas.</p>
+                </div>
+                <div>
+                    <h4>Tab 5 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-4.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+            </div>
+
+        </div>
+        <div>
+
+            <div class="tabs option1">
+                <h3>Custom config example 1:</h3>
+<pre class="prettyprint linenums">
+var tab_config = {
+    &#039;_default&#039; : 1,
+    &#039;_effect&#039;  : &#039;showHide&#039;,
+    &#039;_speed&#039;   : &#039;fast&#039;
+};
+jQuery( selector ).nanotab( tab_config );
+</pre>
+                <ul>
+                    <li>tab 1</li>
+                    <li>tab 2</li>
+                    <li>tab 3</li>
+                    <li>tab 4</li>
+                    <li>tab 5</li>
+                </ul>
+                <div>
+                    <h4>Tab 1 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-7.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 2 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptatum eos nisi, rem minus et omnis eius amet deleniti nostrum? Fugit excepturi saepe assumenda ratione neque facere expedita! Iusto, architecto.</p>
+                </div>
+                <div>
+                    <h4>Tab 3 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-6.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 4 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nihil dolorum hic quasi, aliquid provident nobis velit, sint ducimus officiis error tempora. Ipsa, eos aspernatur hic consequatur ab, optio voluptas.</p>
+                </div>
+                <div>
+                    <h4>Tab 5 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-4.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+            </div>
+
+        </div>
+        <div>
+
+            <div class="tabs option2">
+                <h3>Custom config example 2:</h3>
+<pre class="prettyprint linenums">
+var tab_config = {
+    &#039;_default&#039; : 2,
+    &#039;_effect&#039;  : &#039;slide&#039;,
+    &#039;_speed&#039;   : &#039;slow&#039;
+};
+jQuery( selector ).nanotab( tab_config );
+</pre>
+                <ul>
+                    <li>tab 1</li>
+                    <li>tab 2</li>
+                    <li>tab 3</li>
+                    <li>tab 4</li>
+                    <li>tab 5</li>
+                </ul>
+                <div>
+                    <h4>Tab 1 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-7.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 2 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptatum eos nisi, rem minus et omnis eius amet deleniti nostrum? Fugit excepturi saepe assumenda ratione neque facere expedita! Iusto, architecto.</p>
+                </div>
+                <div>
+                    <h4>Tab 3 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-6.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 4 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nihil dolorum hic quasi, aliquid provident nobis velit, sint ducimus officiis error tempora. Ipsa, eos aspernatur hic consequatur ab, optio voluptas.</p>
+                </div>
+                <div>
+                    <h4>Tab 5 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-4.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+            </div>
+
+        </div>
+        <div>
+
+            <div class="option3">
+                <h3>Default config without style</h3>
+<pre class="prettyprint linenums">
+jQuery( selector ).nanotab();
+</pre>
+                <ul>
+                    <li>tab 1</li>
+                    <li>tab 2</li>
+                    <li>tab 3</li>
+                    <li>tab 4</li>
+                    <li>tab 5</li>
+                </ul>
+                <div>
+                    <h4>Tab 1 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-7.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 2 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptatum eos nisi, rem minus et omnis eius amet deleniti nostrum? Fugit excepturi saepe assumenda ratione neque facere expedita! Iusto, architecto.</p>
+                </div>
+                <div>
+                    <h4>Tab 3 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-6.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+                <div>
+                    <h4>Tab 4 content</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nihil dolorum hic quasi, aliquid provident nobis velit, sint ducimus officiis error tempora. Ipsa, eos aspernatur hic consequatur ab, optio voluptas.</p>
+                </div>
+                <div>
+                    <h4>Tab 5 content</h4>
+                    <img src="http://lorempixel.com/output/abstract-q-c-120-60-4.jpg" alt="" align="left" />
+                    <p>Lorem ipsum Reprehenderit exercitation sint sunt velit reprehenderit mollit culpa magna sunt laborum ut pariatur laboris eu sed enim ut consectetur.</p>
+                    <p>Lorem ipsum Sit Excepteur quis laborum incididunt dolor.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script type="text/javascript" src="jquery.nanotab.min.js"></script>
+    <script type="text/javascript">
+
+        jQuery('.tabs.options').nanotab();
+
+        jQuery('.tabs.option0').nanotab();
+
+        var option1 = { '_default' : 1, '_effect' : 'showHide', '_speed' : 'fast' };
+        jQuery('.tabs.option1').nanotab( option1 );
+
+        var option2 = { '_default' : 2, '_effect' : 'slide', '_speed' : 'slow' };
+        jQuery('.tabs.option2').nanotab( option2 );
+
+        jQuery('.option3').nanotab();
+
+    </script>
+
+</body>
+</html>
